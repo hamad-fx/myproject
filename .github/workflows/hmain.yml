@@ -1,0 +1,23 @@
+
+name: Two Jobs Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print first message
+        run: echo "Hello from Job 1"
+
+  job2:
+    name: Second Job
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Print second message
+        run: echo "Hello from Job 2"
